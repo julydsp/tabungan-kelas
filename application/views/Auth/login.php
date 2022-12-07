@@ -1,43 +1,40 @@
-    <div class="container">
+	
+    <div class="login-box">
+		<div class="login-logo">
+			<a href="#">
+				<h2><b>Elektronik Tabungan Siswa</h2></b>
+				</a>
+		</div>
+		<!-- /.login-logo -->
+		<div class="login-box-body">
+			<p class="login-box-msg">=== Login System ===</p>
+			<form action="" method="post">
+            <?= $this->session->flashdata('pesan'); ?>
+				<div class="form-group has-feedback">
+					<input type="text" class="form-control" name="email" style="color:black;" placeholder="Email" required>
+					<span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
+				</div>
+				<div class="form-group has-feedback">
+					<input type="password" class="form-control" name="password" placeholder="Password" required>
+					<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
+				</div>
+				<div class="row">
+					<div class="col-xs-8">
+					</div>
+					<!-- /.col -->
+					<div class="col-xs-4">
+						<button type="submit" class="btn btn-primary btn-block btn-flat" name="btnLogin" title="Masuk Sistem">
+							<b>Masuk</b>
+						</button>
+					</div>
+					<!-- /.col -->
+				</div>
+			</form>
+			<!-- /.social-auth-links -->
 
-        <!-- Outer Row -->
-        <div class="row justify-content-center">
-
-            <div class="col-lg-7">
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
-                        <div class="row">
-                            <div class="col-lg">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">LOGIN</h1>
-                                    </div>
-                                    <form class="user" method="post" action="<?= base_url('Auth/registrasi') ?>">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control form-control-user"
-                                                id="email" name="email" placeholder="Masukkan Email">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                                id="password" name="password" placeholder="Masukkan Password">
-                                        </div>
-                                        <button type="submit" class="btn btn-danger btn-user btn-block">
-                                            Login </button>
-                                        </a>
-                                    </form>
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="<?= base_url('Auth/registrasi'); ?>">Create an Account!</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
+		</div>
+		<!-- /.login-box-body -->
+	</div>
+	<!-- /.login-box -->
