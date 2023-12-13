@@ -24,30 +24,47 @@
 						<button type="button" class="btn btn-box-tool" data-widget="collapse">
 							<i class="fa fa-minus"></i>
 						</button>
-						<button type="button" class="btn btn-box-tool" data-widget="remove">
-							<i class="fa fa-remove"></i>
-						</button>
 					</div>
 				</div>
 				<!-- /.box-header -->
+				<?php foreach ($kelas as $k):?>
 				<!-- form start -->
-				<form action="" method="post" enctype="multipart/form-data">
+				<form id="editKelas" action="<?=base_url('kelas/edit_kelas/'. $k['id_kelas']);?>" method="post" enctype="multipart/form-data">
 					<div class="box-body">
 						<input type='hidden' class="form-control" name="id_kelas" value="<?= $id_kelas ?>"
 						 readonly/>
-					<?php foreach ($kelas as $k):?>
 					<div class="form-group">
 						<label>Kelas</label>
 						<input class="form-control" name="kelas" value="<?= $k['kelas']?>"
 						/>
+						<small class="invalid-feedback text-danger"><?= form_error('kelas') ?></small>
 					</div>
 					<!-- /.box-body -->
-					<?php endforeach ?>
 					<div class="box-footer">
-						<input type="submit" name="Ubah" value="Ubah" class="btn btn-success">
+						<button type="button" name="Ubah" value="Ubah" onclick="editForm()" class="btn btn-success">Ubah</button>
 						<a href="<?=base_url('kelas')?>" class="btn btn-warning">Batal</a>
 					</div>
 				</form>
+				<?php endforeach ?>
 			</div>
 			<!-- /.box -->
 </section>
+<script>
+function editForm() {
+      // Use SweetAlert for confirmation
+      Swal.fire({
+         title: 'Apakah Anda yakin?',
+         text: 'Anda akan mengubah data kelas!',
+         icon: 'question',
+         showCancelButton: true,
+         confirmButtonColor: '#ff0000',
+         cancelButtonColor: '#008000',
+         confirmButtonText: 'Ya, Ubah!',
+         cancelButtonText: 'Batal'
+      }).then((result) => {
+         if (result.isConfirmed) {
+			 document.getElementById('editKelas').submit();
+         }
+      });
+   }
+</script>

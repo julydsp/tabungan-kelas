@@ -11,19 +11,22 @@ class Setoran extends CI_Controller
     public function index() {
         $data['profil'] = $this->ModelSekolah->get_profil()->result_array();
         $data['setor'] = $this->ModelSetor->jointabungan()->result_array();
+        $data['nama'] = $this->session->userdata()['nama'];
+        $data['total'] = $this->ModelSetor->get_total();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
         $this->load->view('auth/setoran');
-        $this->load->view('templates/footer');
+        $this->load->view('templates/footer');  
     }
     public function edit_setoran(){
-        $this->form_validation->set_rules('nis','Nis', 'required');
+        $this->form_validation->set_rules('setor','Setor', 'required');
         
         if ($this->form_validation->run() == false) {
         $data['profil'] = $this->ModelSekolah->get_profil()->result_array();
         $data['tampil'] = $this->ModelSetor->get_siswa()->result_array();
-        $data['siswa'] = $this->ModelSiswa->edit_siswa($this->uri->segment(3))->row_array();
-        $data['nis'] = $this->uri->segment(3);
+        $data['nama'] = $this->session->userdata()['nama'];
+        $data['siswa'] = $this->ModelSetor->edit_setor($this->uri->segment(3))->row_array();
+        $data['id_tabungan'] = $this->uri->segment(3);
         
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
@@ -31,23 +34,29 @@ class Setoran extends CI_Controller
         $this->load->view('auth/view_edit_setoran');
         $this->load->view('templates/footer');
     } else {
+         $raw_setor = $this->input->post('setor', true);
+
+        // Membersihkan nilai dari karakter selain angka
+        $clean_setor = preg_replace("/[^0-9]/", "", $raw_setor);
+
+        // Mengonversi nilai setor menjadi integer
+        $integer_setor = (int)$clean_setor;
         $data = [
-            'nama_siswa' => $this->input->post('nama_siswa', true),
-            'jekel' => $this->input->post('jekel', true),
-            'kelas' => $this->input->post('kelas', true),
-            'status' => $this->input->post('status', true),
-            'tahun_masuk' => $this->input->post('tahun_masuk', true),
+            'setor' => $integer_setor,
         ];
-        $this->ModelSiswa->ubah_siswa(['nis' => $this->input->post('nis')], $data);
-        redirect('siswa');
+        $this->ModelSetor->ubah_setor([ 'id_tabungan' => $this->input->post('id_tabungan', true)], $data);
+        redirect('setoran');
     }
 }
     public function add_setoran(){
-        $this->form_validation->set_rules('nis','Nis', 'required');
+        $this->form_validation->set_rules('nis','Nis', 'trim|required');
     
         if ($this->form_validation->run() == false){
             $data['tampil'] = $this->ModelSetor->get_siswa()->result_array();
             $data['profil'] = $this->ModelSekolah->get_profil()->result_array();
+            $data['nama'] = $this->session->userdata()['nama'];
+
+
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar');
             $this->load->view('auth/view_add_setoran');
@@ -62,8 +71,30 @@ class Setoran extends CI_Controller
     }
     public function delete_setoran(){
     
-        $where = ['nis' => $this->uri->segment(3)];
+        $where = ['id_tabungan' => $this->uri->segment(3)];
         $this->ModelSetor->delete_setoran($where);
         redirect('setoran');
+    }
+    public function get_saldo_by_nis($nis) {
+        $saldo = $this->ModelSetor->get_saldo_by_nis($nis);
+        echo $saldo;
+}
+
+    public function getDetail(){
+    $nis = $this->input->post('nis');
+    $data = $this->ModelSetor->get_total_setoran_by_nis($nis);
+
+    if(isset($data)){
+        $params = [
+            'success' => true,
+            'nis' => $data,
+        ];
+    }else{
+        $params = [
+            'success' => false,
+        ];
+    }
+    echo json_encode($params);
+    
     }
 }

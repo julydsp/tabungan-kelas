@@ -22,8 +22,7 @@
 		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 		<h4>
 			<i class="icon fa fa-info"></i> Total Setoran</h4>
-				<h3>
-			Rp 668.600,00		</h3>
+				<h3>Rp  <?= number_format($total, 0, ',', '.');?></h3>
 	</div>
 
 
@@ -34,9 +33,6 @@
 			<div class="box-tools pull-right">
 				<button type="button" class="btn btn-box-tool" data-widget="collapse">
 					<i class="fa fa-minus"></i>
-				</button>
-				<button type="button" class="btn btn-box-tool" data-widget="remove">
-					<i class="fa fa-remove"></i>
 				</button>
 			</div>
 		</div>
@@ -73,19 +69,22 @@
 								<?= $se['tanggal'];?>				
 							</td>
 							
-							<td align="right">
-								<?= $se['setor'];?>						
+							<td>
+								Rp  <?= number_format($se['setor'], 0, ',', '.');?>						
 							</td>
 							
 							<td>
 
-								<a href="<?=base_url('setoran/edit_setoran')?>" title="Ubah"
+								<a href="<?=base_url('setoran/edit_setoran/'. $se['id_tabungan'])?>" title="Ubah"
 								 class="btn btn-success btn-sm">
 									<i class="glyphicon glyphicon-edit"></i>
 								</a>
-								<a href="<?=base_url('setoran/delete_setoran/'. $se['nis'])?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')"
+								<!-- <a href="<?=base_url('setoran/delete_setoran/'. $se['id_tabungan'])?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')"
 								 title="Hapus" class="btn btn-danger btn-sm">
-									<i class="glyphicon glyphicon-trash"></i>
+									<i class="glyphicon glyphicon-trash"></i> -->
+									<a id="delete" href="#"
+								title="Hapus" onclick="deleteSiswa('<?= $se['id_tabungan']; ?>', '<?= $se['nama_siswa']; ?>', '<?= number_format($se['setor'], 0, ',', '.');?>')" class="btn btn-sm btn-danger alert_notif">
+								<i class="glyphicon glyphicon-trash"></i>
 							
 							</td>
 						</tr>
@@ -96,3 +95,23 @@
 		</div>
 	</div>
 </section>
+<script>
+
+function deleteSiswa(idTabungan, namaSiswa, setor) {
+      // Use SweetAlert for confirmation
+      Swal.fire({
+         title: 'Apakah Anda yakin?',
+         text: 'Anda akan menghapus Setoran siswa bernama ' + namaSiswa + ' dengan jumlah Setoran Rp ' + setor,
+         icon: 'question',
+         showCancelButton: true,
+         confirmButtonColor: '#ff0000',
+         cancelButtonColor: '#008000',
+         confirmButtonText: 'Ya, Hapus!',
+         cancelButtonText: 'Batal'
+      }).then((result) => {
+         if (result.isConfirmed) {
+            window.location.href = '<?= base_url('setoran/delete_setoran/'); ?>' + idTabungan;
+         }
+      });
+   }
+</script>

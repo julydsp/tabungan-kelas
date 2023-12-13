@@ -24,58 +24,98 @@
 						<button type="button" class="btn btn-box-tool" data-widget="collapse">
 							<i class="fa fa-minus"></i>
 						</button>
-						<button type="button" class="btn btn-box-tool" data-widget="remove">
-							<i class="fa fa-remove"></i>
-						</button>
 					</div>
 				</div>
 				<!-- /.box-header -->
 				<!-- form start -->
-				<form action="<?= base_url('siswa/add_siswa');?>" method="post" enctype="multipart/form-data">
+				<form id="addSiswaForm" action="<?= base_url('siswa/add_siswa');?>" method="post" enctype="multipart/form-data">
 					<div class="box-body">
 						<div class="form-group">
-							<label>NIS</label>
-							<input type="text" name="nis" id="nis" class="form-control" placeholder="NIS">
+							<label for="nis">Nis</label>
+							<input type="number" name="nis" id="nis" class="form-control" placeholder="NIS">
+							<div class="invalid-feedback text-danger"><?= form_error('nis') ?></div>
 						</div>
 
 						<div class="form-group">
-							<label>Nama Siswa</label>
+							<label for="nama_siswa">Nama Siswa</label>
 							<input type="text" name="nama_siswa" id="nama_siswa" class="form-control" placeholder="Nama Siswa">
+							<div class="invalid-feedback text-danger"><?= form_error('nama_siswa') ?></div>
 						</div>
 
 						<div class="form-group">
-							<label>Jenis Kelamin</label>
-							<select name="jekel" id="jekel" class="form-control" required>
-								<option>-- Pilih --</option>
-								<option value="Laki-laki" >Laki-laki</option>
-								<option value="Perempuan" >Perempuan</option>
+							<label>Jenis kelamin</label>
+							<select name="jekel" id="jekel" class="form-control" >
+								<option value="">-- Pilih --</option>
+								<option value="Laki-laki">Laki-laki</option>
+								<option value="Perempuan">Perempuan</option>
 							</select>
+							<div class="invalid-feedback text-danger"><?= form_error('jekel') ?></div>
 						</div>
 
+
 						<div class="form-group">
-							<label>Kelas</label>
-							<select name="kelas" id="kelas" class="form-control" required>
-							<option>-- Pilih --</option>
+							<label for="kelas">Kelas</label>
+							<select name="kelas" id="kelas" class="form-control" >
+							<option value="">-- Pilih --</option>
 							<?php foreach ($tampil as $t):?>
 								<option value="<?= $t['id_kelas'] ?>">
 									<?= $t['kelas']?>
 								</option>
 							<?php endforeach?>                     
 							</select>
+							<div class="invalid-feedback text-danger"><?= form_error('kelas') ?></div>
 						</div>
 
 						<div class="form-group">
-							<label>Tahun Masuk</label>
+							<label for="status">Status</label>
+							<select name="status" id="status" class="form-control">
+								<option value="">-- Pilih --</option>
+								<option value="Aktif">Aktif</option>
+								<option value="Lulus">Lulus</option>
+								<option value="pindah">Pindah</option>
+							</select>
+							<div class="invalid-feedback text-danger"><?= form_error('status') ?></div>
+						</div>
+
+						<div class="form-group">
+							<label for="tahun_masuk">Tahun Masuk</label>
 							<input type="text" name="tahun_masuk" id="tahun_masuk" class="form-control" placeholder="Tahun Masuk">
+							<div class="invalid-feedback text-danger"><?= form_error('tahun_masuk') ?></div>
 						</div>
 					</div>
 					<!-- /.box-body -->
 
 					<div class="box-footer">
-						<input type="submit" name="Simpan" value="Simpan" class="btn btn-info">
-						<a href="<?=base_url('siswa')?>" class="btn btn-warning">Batal</a>
+						<!-- <input type="submit" name="Simpan" value="Simpan" class="btn btn-info">
+						<a href="" class="btn btn-warning">Batal</a> -->
+						<button type="button" onclick="submitForm()" class="btn btn-info">Simpan</button>
+      					<a href="<?=base_url('siswa')?>" class="btn btn-warning">Batal</a>
 					</div>
 				</form>
 			</div>
 			<!-- /.box -->
 </section>
+<script>
+
+function submitForm() {
+      // Use SweetAlert for confirmation
+      Swal.fire({
+         title: 'Apakah Anda yakin?',
+         text: 'Anda akan menambahkan siswa!',
+         icon: 'question',
+         showCancelButton: true,
+         confirmButtonColor: '#ff0000',
+         cancelButtonColor: '#008000',
+         confirmButtonText: 'Ya, Tambahkan!',
+         cancelButtonText: 'Batal'
+      }).then((result) => {
+         if (result.isConfirmed) {
+			 document.getElementById('addSiswaForm').submit();
+            // If confirmed, redirect to delete action
+            // window.location.href = '' + nis;
+         }
+      });
+   }
+</script>
+
+ 

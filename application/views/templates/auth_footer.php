@@ -6,7 +6,7 @@
 	<!-- iCheck -->
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 	<!-- sweet alert -->
-    <body class="hold-transition login-page" style="background:url(dist/img/veloz.jpg)
+    <body class="hold-transition login-page" style="background:url(dist/img/bgLogin.jpg)
 no-repeat center center fixed; background-size: cover;
  -webkit-background-size: cover; 
  -moz-background-size: cover; -o-background-size: cover;">

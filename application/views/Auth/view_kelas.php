@@ -22,9 +22,6 @@
 				<button type="button" class="btn btn-box-tool" data-widget="collapse">
 					<i class="fa fa-minus"></i>
 				</button>
-				<button type="button" class="btn btn-box-tool" data-widget="remove">
-					<i class="fa fa-remove"></i>
-				</button>
 			</div>
 		</div>
 		<!-- /.box-header -->
@@ -53,7 +50,7 @@
 								 class="btn btn-success">
 									<i class="glyphicon glyphicon-edit"></i>
 								</a>
-								<a href="<?=base_url('kelas/delete_kelas/'. $k['id_kelas'])?>" onclick="return confirm('Yakin Hapus Data Ini ?')"
+								<a id="delete" href="#" onclick="deleteKelas('<?= $k['kelas'] ?>', '<?= $k['id_kelas']; ?>')"
 								 title="Hapus" class="btn btn-danger">
 									<i class="glyphicon glyphicon-trash"></i>
 									</>
@@ -66,3 +63,23 @@
 		</div>
 	</div>
 </section>
+<script>
+
+function deleteKelas(kelas, idKelas) {
+      // Use SweetAlert for confirmation
+      Swal.fire({
+         title: 'Apakah Anda yakin?',
+         text: 'Anda akan menghapus kelas ' + kelas + '!',
+         icon: 'question',
+         showCancelButton: true,
+         confirmButtonColor: '#ff0000',
+         cancelButtonColor: '#008000',
+         confirmButtonText: 'Ya, Hapus!',
+         cancelButtonText: 'Batal'
+      }).then((result) => {
+         if (result.isConfirmed) {
+			 window.location.href = '<?=base_url('kelas/delete_kelas/'); ?>' + idKelas;
+         }
+      });
+   }
+</script>

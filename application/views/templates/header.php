@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="<?=base_url('bootstrap/css/bootstrap.min.css')?>">
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+
 	<!-- Ionicons -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 	<!-- DataTables -->
@@ -23,8 +24,13 @@
 	<!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
 	<link rel="stylesheet" href="<?=base_url('dist/css/skins/_all-skins.min.css')?>">
+	<!-- jQuerry 3.6.4 -->
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+	<!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	<!-- <script src="<?base_url('dist/js/alert.js')?>"></script> -->
+	
 </head>
 
 <body class="hold-transition skin-red sidebar-mini">

@@ -11,6 +11,7 @@ class profil_sekolah extends CI_Controller
         $this->load->library('form_validation');
     }
     public function index() {
+        $data['nama'] = $this->session->userdata()['nama'];
         $data['profil'] = $this->ModelSekolah->get_profil()->result_array();
         
         $this->load->view('templates/header', $data);
@@ -24,11 +25,13 @@ class profil_sekolah extends CI_Controller
     }
     public function edit($id){
         $this->form_validation->set_rules('nama_sekolah','Nama_sekolah', 'trim|required');
+        $this->form_validation->set_rules('nama_sekolah','Nama_sekolah', 'trim|required');
+        $this->form_validation->set_rules('nama_sekolah','Nama_sekolah', 'trim|required');
         
         if ($this->form_validation->run() == false) {
             $data['sekolah'] = $this->ModelSekolah->get_profil()->row_array();
             $data['profil'] = $this->ModelSekolah->get_profil()->result_array();
-            
+            $data['nama'] = $this->session->userdata()['nama'];
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar');
             // $this->load->view('templates/topbar');

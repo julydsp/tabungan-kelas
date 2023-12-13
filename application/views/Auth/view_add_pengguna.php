@@ -23,43 +23,43 @@
 						<button type="button" class="btn btn-box-tool" data-widget="collapse">
 							<i class="fa fa-minus"></i>
 						</button>
-						<button type="button" class="btn btn-box-tool" data-widget="remove">
-							<i class="fa fa-remove"></i>
-						</button>
 					</div>
 				</div>
 				<!-- /.box-header -->
 				<!-- form start -->
 				<form action="<?=base_url('pengguna_sistem/tambah_pengguna')?>" method="post" enctype="multipart/form-data">
                     <div class="box-body">
-                        <div class="form-group">
-	                        
-                        </div>
+                        <!-- <div class="form-group">
+	                        <label for="image-profil">Profil Pengguna</label>
+							<input type="file" name="image-profil">
+							<div class="invalid-feedback text-danger"></div>
+                        </div> -->
                         <div class="form-group">
 							<label for="exampleInputEmail1">Nama Pengguna</label>
 							<input type="text" name="nama" id="nama" class="form-control" placeholder="Nama lengkap">
-                            
+                            <div class="invalid-feedback text-danger"><?= form_error('nama') ?></div>
 						</div>
 
 						<div class="form-group">
 							<label for="exampleInputEmail1">Email</label>
 							<input type="text" name="email" id="email" class="form-control"  placeholder="Email">
-                            
+                            <div class="invalid-feedback text-danger"><?= form_error('email') ?></div>
 						</div>
 
 						<div class="form-group">
 							<label for="exampleInputPassword1">Password</label>
 							<input type="password" name="password" id="password" class="form-control" placeholder="Password">
-                            
+                            <div class="invalid-feedback text-danger"><?= form_error('password') ?></div>
 						</div>
 
 						<div class="form-group">
 							<label>Level</label>
 							<select name="level" id="level" class="form-control">
-								<option>-- Pilih Level --</option>
+								<option value="">-- Pilih Level --</option>
 								<option value="Administrasi">Administrator</option>
 								<option value="petugas">Petugas</option>
 							</select>
+							<div class="invalid-feedback text-danger"><?= form_error('level') ?></div>
 						</div>
 					</div>
                     <!-- /.box-body -->

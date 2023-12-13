@@ -23,9 +23,6 @@
 						<button type="button" class="btn btn-box-tool" data-widget="collapse">
 							<i class="fa fa-minus"></i>
 						</button>
-						<button type="button" class="btn btn-box-tool" data-widget="remove">
-							<i class="fa fa-remove"></i>
-						</button>
 					</div>
 				</div>
 				<!-- /.box-header -->
@@ -33,25 +30,29 @@
 				<form action="" method="post" enctype="multipart/form-data">
 					<div class="box-body">
 						<div class="form-group">
-							<input type='hidden' class="form-control" name="id" value="<?= $sekolah['id']?>"
+							<input type='text' class="form-control" name="id" value="<?= $sekolah['id']?>"
 							 readonly/>
+							 <div class="invalid-feedback text-danger"><?= form_error('status') ?></div>
 						</div>
 
 						<div class="form-group">
 							<label>Nama Sekolah</label>
 							<input class="form-control" name="nama_sekolah" value="<?= $sekolah['nama_sekolah']?>"/>
+							<div class="invalid-feedback text-danger"><?= form_error('status') ?></div>
 						</div>
 
 						<div class="form-group">
 							<label>alamat</label>
 							<input class="form-control" name="alamat" value="<?= $sekolah['alamat']?>"
 							/>
+							<div class="invalid-feedback text-danger"><?= form_error('status') ?></div>
 						</div>
 
 						<div class="form-group">
 							<label>Akreditasi</label>
 							<input type="text" class="form-control" name="akreditasi" value="<?= $sekolah['akreditasi']?>"
 							/>
+							<div class="invalid-feedback text-danger"><?= form_error('status') ?></div>
 						</div>
 					</div>
 					<!-- /.box-body -->

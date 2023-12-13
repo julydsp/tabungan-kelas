@@ -24,6 +24,7 @@ class Autentifikasi extends CI_Controller
         $email = $this->input->post('email');
         $password = $this->input->post('password');
         $user = $this->db->get_where('user', ['email' => $email])->row_array();
+        $this->session->set_userdata($user);
     
         if($user) {
             if(password_verify($password, $user['password'])) {
@@ -35,4 +36,23 @@ class Autentifikasi extends CI_Controller
             }
         }
     }
+    // private function _login() {
+    // $email = $this->input->post('email');
+    // $password = $this->input->post('password');
+    // $user = $this->db->get_where('user', ['email' => $email])->row_array();
+
+    // if ($user) {
+    //     if (password_verify($password, $user['password'])) {
+    //         // Return JSON response for successful login
+    //         $this->output
+    //             ->set_content_type('application/json')
+    //             ->set_output(json_encode(['success' => true]));
+    //     } else {
+    //         // Return JSON response for failed login
+    //         $this->output
+    //             ->set_content_type('application/json')
+    //             ->set_output(json_encode(['success' => false, 'message' => 'Password Anda Salah']));
+    //     }
+    // }
+// }
 }

@@ -11,6 +11,7 @@ class Kelas extends CI_Controller
     public function index() {
         $data['profil'] = $this->ModelSekolah->get_profil()->result_array();
         $data['kelas'] = $this->ModelKelas->tampil_kelas()->result_array();
+        $data['nama'] = $this->session->userdata()['nama'];
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
         // $this->load->view('templates/topbar');
@@ -18,10 +19,11 @@ class Kelas extends CI_Controller
         $this->load->view('templates/footer');
     }
     public function edit_kelas(){
-        $this->form_validation->set_rules('kelas','Kelas', 'trim|required');
+        $this->form_validation->set_rules('kelas','Kelas', 'trim|required|min_length[2]|max_length[15]');
         
         if ($this->form_validation->run() == false) {
             $data['profil'] = $this->ModelSekolah->get_profil()->result_array();
+            $data['nama'] = $this->session->userdata()['nama'];
             $data['kelas'] = $this->ModelKelas->get_kelas($this->uri->segment(3))->result_array();
             $data['id_kelas'] = $this->uri->segment(3);
             $this->load->view('templates/header', $data);
@@ -37,10 +39,11 @@ class Kelas extends CI_Controller
         }
     }
     public function add_kelas(){
-        $this->form_validation->set_rules('kelas','Kelas', 'required');
+        $this->form_validation->set_rules('kelas','Kelas', 'required|min_length[2]|max_length[15]');
         
         if ($this->form_validation->run() == false){
             $data['profil'] = $this->ModelSekolah->get_profil()->result_array();
+            $data['nama'] = $this->session->userdata()['nama'];
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar');
             $this->load->view('auth/add_kelas');

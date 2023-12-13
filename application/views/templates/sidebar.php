@@ -12,7 +12,7 @@
 			</div>
 			<div class="pull-left info">
 				<p>
-					<?= 'JULY DWI SAPUTRA'?>
+					<?= $nama;?>
 				</p>
 				<span class="label label-success">
 					<?php echo 'administrasi' ?>
@@ -93,7 +93,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="<?= base_url('autentifikasi')?>" onclick="return confirm('Anda yakin keluar dari aplikasi ?')">
+				<a href="#" onclick="submitForm()">
 					<i class="fa fa-sign-out"></i>
 					<span>Logout</span>
 					<span class="pull-right-container"></span>
@@ -107,4 +107,19 @@
 		<!-- Content Header (Page header) -->
 		<!-- Main content -->
 		<section class="content">
-
+<script>
+function submitForm() {
+   // Use SweetAlert for success message
+   Swal.fire({
+      title: 'Sukses!',
+      text: 'Anda berhasil LogOut',
+      icon: 'success',
+      confirmButtonColor: '#008000', // Change the color to green
+      confirmButtonText: 'OK'
+   }).then((result) => {
+      if (result.isConfirmed) {
+         window.location.href = '<?= base_url('autentifikasi'); ?>';
+      }
+   });
+}
+</script>

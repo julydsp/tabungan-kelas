@@ -12,7 +12,7 @@ class kas extends CI_Controller
     }
     public function index() {
         $data['profil'] = $this->ModelSekolah->get_profil()->result_array();
-        
+        $data['nama'] = $this->session->userdata()['nama'];
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
         // $this->load->view('templates/topbar');

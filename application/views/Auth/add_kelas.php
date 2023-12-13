@@ -24,25 +24,23 @@
 						<button type="button" class="btn btn-box-tool" data-widget="collapse">
 							<i class="fa fa-minus"></i>
 						</button>
-						<button type="button" class="btn btn-box-tool" data-widget="remove">
-							<i class="fa fa-remove"></i>
-						</button>
 					</div>
 				</div>
 				<!-- /.box-header -->
 				<!-- form start -->
-				<form action="<?= base_url('Kelas/add_kelas')?>" method="post" enctype="multipart/form-data">
+				<form id="addKelasForm" action="<?= base_url('Kelas/add_kelas')?>" method="post" enctype="multipart/form-data">
 					<div class="box-body">
 						<div class="form-group">
 							<label>Kelas</label>
 							<input type="text" name="kelas" id="kelas" class="form-control" placeholder="Kelas">
+							<small class="invalid-feedback text-danger"><?= form_error('kelas') ?></small>
 						</div>
 
 					</div>
 					<!-- /.box-body -->
 
 					<div class="box-footer">
-						<input type="submit" name="Simpan" value="Simpan" class="btn btn-info">
+						<button type="button" onclick="submitForm()" name="Simpan" value="Simpan" class="btn btn-info">Simpan</button>
 						<a href="<?=base_url('kelas');?>" class="btn btn-warning">Batal</a>
 					</div>
 				</form>
@@ -50,5 +48,24 @@
         </div>
     </div>	<!-- /.box -->
 </section>
+<script>
 
+function submitForm() {
+      // Use SweetAlert for confirmation
+      Swal.fire({
+         title: 'Apakah Anda yakin?',
+         text: 'Anda akan menambahkan kelas!',
+         icon: 'question',
+         showCancelButton: true,
+         confirmButtonColor: '#ff0000',
+         cancelButtonColor: '#008000',
+         confirmButtonText: 'Ya, Tambahkan!',
+         cancelButtonText: 'Batal'
+      }).then((result) => {
+         if (result.isConfirmed) {
+			 document.getElementById('addKelasForm').submit();
+         }
+      });
+   }
+</script>
     

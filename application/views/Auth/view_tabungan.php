@@ -25,16 +25,12 @@
 						<button type="button" class="btn btn-box-tool" data-widget="collapse">
 							<i class="fa fa-minus"></i>
 						</button>
-						<button type="button" class="btn btn-box-tool" data-widget="remove">
-							<i class="fa fa-remove"></i>
-						</button>
 					</div>
 				</div>
 				<!-- /.box-header -->
 				<!-- form start -->
-				<form action="<?=base_url('tabungan/cek_tabungan')?>" method="post" enctype="multipart/form-data">
+				<form action="<?=base_url('tabungan/data_tabungan');?>" method="post" enctype="multipart/form-data">
 					<div class="box-body">
-
 						<div class="form-group">
 							<label>Siswa</label>
 							<select name="nis" id="nis" class="form-control select2" style="width: 100%;">

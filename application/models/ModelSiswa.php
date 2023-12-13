@@ -24,6 +24,7 @@ class ModelSiswa extends CI_Model
         $params['nama_siswa'] = $post['nama_siswa'];
         $params['jekel'] = $post['jekel'];
         $params['id_kelas'] = $post['kelas'];
+        $params['status'] = $post['status'];
         $params['tahun_masuk'] = $post['tahun_masuk'];
         $this->db->insert('siswa', $params);
     }
@@ -32,5 +33,10 @@ class ModelSiswa extends CI_Model
         $this->db->from('siswa');
         $this->db->join('kelas', 'siswa.id_kelas = kelas.id_kelas');
         return $this->db->get();
+    }
+    public function get_total_siswa(){
+        $sql = "SELECT COUNT(nis) as nis_siswa FROM siswa" ; 
+        $result = $this->db->query($sql);
+        return $result->row()->nis_siswa; 
     }
 }
