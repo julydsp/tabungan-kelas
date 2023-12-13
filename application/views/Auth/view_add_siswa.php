@@ -33,13 +33,13 @@
 						<div class="form-group">
 							<label for="nis">Nis</label>
 							<input type="number" name="nis" id="nis" class="form-control" placeholder="NIS">
-							<div class="invalid-feedback text-danger"><?= form_error('nis') ?></div>
+							<small class="invalid-feedback text-danger"><?= form_error('nis') ?></small>
 						</div>
 
 						<div class="form-group">
 							<label for="nama_siswa">Nama Siswa</label>
 							<input type="text" name="nama_siswa" id="nama_siswa" class="form-control" placeholder="Nama Siswa">
-							<div class="invalid-feedback text-danger"><?= form_error('nama_siswa') ?></div>
+							<small class="invalid-feedback text-danger"><?= form_error('nama_siswa') ?></small>
 						</div>
 
 						<div class="form-group">
@@ -49,7 +49,7 @@
 								<option value="Laki-laki">Laki-laki</option>
 								<option value="Perempuan">Perempuan</option>
 							</select>
-							<div class="invalid-feedback text-danger"><?= form_error('jekel') ?></div>
+							<small class="invalid-feedback text-danger"><?= form_error('jekel') ?></small>
 						</div>
 
 
@@ -63,7 +63,7 @@
 								</option>
 							<?php endforeach?>                     
 							</select>
-							<div class="invalid-feedback text-danger"><?= form_error('kelas') ?></div>
+							<small class="invalid-feedback text-danger"><?= form_error('kelas') ?></small>
 						</div>
 
 						<div class="form-group">
@@ -74,7 +74,7 @@
 								<option value="Lulus">Lulus</option>
 								<option value="pindah">Pindah</option>
 							</select>
-							<div class="invalid-feedback text-danger"><?= form_error('status') ?></div>
+							<small class="invalid-feedback text-danger"><?= form_error('status') ?></small>
 						</div>
 
 						<div class="form-group">
