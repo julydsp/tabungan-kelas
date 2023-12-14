@@ -30,7 +30,6 @@ class Setoran extends CI_Controller
         
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
-        // $this->load->view('templates/topbar');
         $this->load->view('auth/view_edit_setoran');
         $this->load->view('templates/footer');
     } else {
@@ -62,7 +61,6 @@ class Setoran extends CI_Controller
             $this->load->view('auth/view_add_setoran');
             $this->load->view('templates/footer');
         }else{
-            // var_dump($this->input->post());die;
     
             $post = $this->input->post(null, TRUE);
             $this->ModelSetor->tambah_setor($post);

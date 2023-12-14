@@ -6,13 +6,13 @@
 	    </div>
 	    <!-- /.login-logo -->
 	    <div class="login-box-body">
-	        <p class="login-box-msg">=== Login System ===</p>
+	        <p class="login-box-msg text-bold">Silahkan Login</p>
 	        <form id="login" action="" method="post">
 	            <!-- <?= $this->session->flashdata('pesan'); ?> -->
 	            <div class="form-group has-feedback">
 	                <input type="email" class="form-control" name="email" style="color:black;" placeholder="Email" >
 	                <span class="glyphicon glyphicon-user form-control-feedback"></span>
-	                <small class="invalid-feedback text-danger"><?php var_dump(form_error('email')) ?></small>
+	                <small class="invalid-feedback text-danger"><?= form_error('email') ?></small>
 	            </div>
 	            <div class="form-group has-feedback">
 	                <input type="password" class="form-control" name="password" placeholder="Password" >
@@ -36,25 +36,8 @@
 	    </div>
 	    <!-- /.login-box-body -->
 	</div>
-	<!-- /.login-box
-	<script>
-function submitForm() {
-   // Use SweetAlert for success message
-   Swal.fire({
-      title: 'Sukses!',
-      text: 'Anda berhasil Login',
-      icon: 'success',
-      confirmButtonColor: '#008000', // Change the color to green
-      confirmButtonText: 'OK'
-   }).then((result) => {
-      if (result.isConfirmed) {
-         document.getElementById('login').submit();
-         // If confirmed, redirect to delete action
-         // window.location.href = '' + nis;
-      }
-   });
-}
-</script> -->
+
+	<!-- alert ketika login menggunakan ajax -->
 	<script>
 	    $(document).ready(function() {
 	        $('#login').submit(function(e) {

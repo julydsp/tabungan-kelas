@@ -34,7 +34,6 @@ class profil_sekolah extends CI_Controller
             $data['nama'] = $this->session->userdata()['nama'];
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar');
-            // $this->load->view('templates/topbar');
             $this->load->view('auth/edit_profil');
             $this->load->view('templates/footer');
             } else {

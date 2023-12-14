@@ -48,10 +48,9 @@
         </div>
     </div>	<!-- /.box -->
 </section>
+<!-- alert saat menambahkan kelas  -->
 <script>
-
 function submitForm() {
-      // Use SweetAlert for confirmation
       Swal.fire({
          title: 'Apakah Anda yakin?',
          text: 'Anda akan menambahkan kelas!',

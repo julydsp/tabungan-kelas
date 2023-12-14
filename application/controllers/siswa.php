@@ -13,10 +13,8 @@ class siswa extends CI_Controller
         $data['user'] = $this->ModelUser->get_User()->result_array();
         $data['siswa'] = $this->ModelKelas->joinkelas()->result_array();
         $data['nama'] = $this->session->userdata()['nama'];
-        // var_dump($data['siswa']); die ;
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
-        // $this->load->view('templates/topbar');
         $this->load->view('auth/view_siswa');
         $this->load->view('templates/footer');
     }
@@ -36,7 +34,6 @@ class siswa extends CI_Controller
         
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
-        // $this->load->view('templates/topbar');
         $this->load->view('auth/view_edit_siswa');
         $this->load->view('templates/footer');
     } else {
